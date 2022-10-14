@@ -7,6 +7,11 @@ defmodule OnOffSwitchWeb.ErrorView do
   #   %{errors: %{detail: "Internal Server Error"}}
   # end
 
+  def render("error.json", %{changeset: changeset}) do
+    errors = Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
+    %{errors: %{detail: errors}}
+  end
+
   # By default, Phoenix returns the status message from
   # the template name. For example, "404.json" becomes
   # "Not Found".
