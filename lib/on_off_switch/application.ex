@@ -7,7 +7,10 @@ defmodule OnOffSwitch.Application do
 
   @impl true
   def start(_type, _args) do
+    OpentelemetryEcto.setup([:on_off_switch, :repo])
+    OpentelemetryPhoenix.setup()
     children = [
+      OnOffSwitch.PromEx,
       # Start the Ecto repository
       OnOffSwitch.Repo,
       # Start the Telemetry supervisor

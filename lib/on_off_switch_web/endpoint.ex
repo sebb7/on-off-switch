@@ -29,7 +29,10 @@ defmodule OnOffSwitchWeb.Endpoint do
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :on_off_switch
   end
 
+  plug PromEx.Plug, prom_ex_module: OnOffSwitch.PromEx
+
   plug Plug.RequestId
+
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
   plug Plug.Parsers,

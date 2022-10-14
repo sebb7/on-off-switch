@@ -59,3 +59,20 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :on_off_switch, OnOffSwitch.PromEx,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: [
+    host: System.get_env("GRAFANA_HOST", "http://localhost:3000"),
+    # auth_token: System.get_env("GRAFANA_TOKEN", ""),
+    username: "admin",
+    password: "admin",
+    upload_dashboards_on_start: true,
+    annotate_app_lifecycle: true
+  ]
+
+config :opentelemetry, :processors,
+  otel_batch_processor: %{
+    exporter: {:opentelemetry_exporter, %{endpoints: [{:http, 'localhost', 4318, []}]}}
+  }
