@@ -7,5 +7,8 @@ defmodule OnOffSwitchWeb.Router do
 
   scope "/api", OnOffSwitchWeb do
     pipe_through :api
+
+    get "/switch", SwitchController, :show
+    patch "/switch", SwitchController, :update
   end
 end
