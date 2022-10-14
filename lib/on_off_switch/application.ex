@@ -12,6 +12,8 @@ defmodule OnOffSwitch.Application do
     OpentelemetryEcto.setup([:on_off_switch, :repo])
     OpentelemetryPhoenix.setup()
 
+    OpentelemetryLoggerMetadata.setup()
+
     children = [
       OnOffSwitch.PromEx,
       # Start the Ecto repository

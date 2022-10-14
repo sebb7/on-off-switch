@@ -1,6 +1,8 @@
 defmodule OnOffSwitchWeb.SwitchController do
   use OnOffSwitchWeb, :controller
 
+  require Logger
+
   alias OnOffSwitch.Manager
   alias OnOffSwitch.Schemas.SwitchState
 
@@ -13,6 +15,7 @@ defmodule OnOffSwitchWeb.SwitchController do
   end
 
   def update(conn, params) do
+    Logger.info("Recived switch state update request")
     with {:ok, state} <- SwitchState.new(params) do
       Manager.update_state(state)
       send_resp(conn, 204, "")

@@ -43,13 +43,14 @@ defmodule OnOffSwitch.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:prom_ex, "~> 1.7.1"},
 
-      #observability
+      # observability
       {:opentelemetry, "~> 1.1"},
       {:opentelemetry_exporter, "~> 1.2"},
       {:opentelemetry_ecto, "~> 1.0"},
       {:opentelemetry_phoenix, "~> 1.0"},
+      {:opentelemetry_logger_metadata, "~> 0.1.0"},
 
-      #dev
+      # dev
       {:dialyxir, "~> 1.2", only: [:dev], runtime: false},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
