@@ -1,4 +1,5 @@
 defmodule OnOffSwitch.Manager do
+  @moduledoc false
   alias OnOffSwitch.Repo
   alias OnOffSwitch.Schemas.SwitchState
 

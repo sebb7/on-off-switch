@@ -1,4 +1,5 @@
 defmodule OnOffSwitch.Schemas.SwitchState do
+  @moduledoc false
   use Ecto.Schema
 
   import Ecto.Changeset
